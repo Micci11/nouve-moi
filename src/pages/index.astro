@@ -1,11 +1,237 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const featuredProducts = [
+  {
+    name: 'Radiance Collagen',
+    image: 'https://picsum.photos/800/900?wellness&1',
+    href: '/shop/radiance-collagen',
+    tagline: 'Glow support from within',
+  },
+  {
+    name: 'Daily Greens',
+    image: 'https://picsum.photos/800/900?wellness&2',
+    href: '/shop/daily-greens',
+    tagline: 'Clean daily nourishment',
+  },
+  {
+    name: 'Calm Elixir',
+    image: 'https://picsum.photos/800/900?wellness&3',
+    href: '/shop/calm-elixir',
+    tagline: 'A ritual for slower evenings',
+  },
+  {
+    name: 'Hydration+',
+    image: 'https://picsum.photos/800/900?wellness&4',
+    href: '/shop/hydration-plus',
+    tagline: 'Electrolyte support, elevated',
+  },
+];
+
+const productCategories = [
+  {
+    name: 'Supplements',
+    href: '/shop/supplements',
+    image: 'https://picsum.photos/800/600?supplements',
+  },
+  {
+    name: 'Beauty Wellness',
+    href: '/shop/beauty',
+    image: 'https://picsum.photos/800/600?skincare',
+  },
+  {
+    name: 'Sleep & Calm',
+    href: '/shop/sleep',
+    image: 'https://picsum.photos/800/600?sleep',
+  },
+  {
+    name: 'Daily Essentials',
+    href: '/shop/essentials',
+    image: 'https://picsum.photos/800/600?wellness',
+  },
+];
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout
+  title="NOÜVE · moi – Elevated Wellness"
+  description="Premium wellness essentials designed for your next era."
+>
+  <!-- Hero -->
+  <section class="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-stone-100 text-gray-900 py-12 md:py-16 text-center overflow-hidden">
+    <div class="relative mx-auto max-w-5xl px-4 z-10">
+      <p class="uppercase tracking-[0.35em] text-sm md:text-base mb-4 text-gray-600">
+        Elevated Wellness
+      </p>
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-8 tracking-tight">
+        NOÜVE · moi
+      </h1>
+      <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+        Refined supplements and wellness essentials for the woman becoming her next self.
+      </p>
+      <a
+        href="/shop"
+        class="bg-gray-900 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-800 transition inline-block shadow-lg hover:shadow-xl"
+      >
+        Shop the Collection
+      </a>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="container mx-auto px-4 py-16 max-w-7xl">
+    <h2 class="text-4xl md:text-5xl font-heading font-bold text-center mb-12 text-gray-900">
+      Featured Products
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8">
+      {featuredProducts.map((product) => (
+        <a
+          href={product.href}
+          class="block relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-transform hover:scale-105 duration-300"
+        >
+          <img
+            src={product.image}
+            alt={product.name}
+            class="w-full h-72 md:h-80 object-cover transition-transform hover:scale-110 duration-300"
+          />
+          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-center">
+            <h3 class="text-xl font-bold text-white">
+              {product.name}
+            </h3>
+            <p class="text-sm text-white/90 mt-1">
+              {product.tagline}
+            </p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Email Signup -->
+  <section class="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-stone-100 py-10 md:py-14 text-center overflow-hidden">
+    <div class="relative mx-auto max-w-xl px-4 z-10">
+      <h2 class="text-3xl font-heading font-bold mb-4 text-gray-900">
+        Join the Inner Circle
+      </h2>
+      <p class="text-lg text-gray-900 mb-8 opacity-90">
+        Be first to know about launches, rituals, and exclusive offers.
+      </p>
+      <form class="flex flex-col md:flex-row gap-4 justify-center">
+        <input
+          type="email"
+          placeholder="Your email address"
+          class="flex-1 px-4 py-4 rounded-full border border-gray-300 focus:outline-none shadow-sm hover:shadow-md transition text-gray-900 placeholder-gray-500"
+        />
+        <button
+          type="submit"
+          class="bg-gray-900 text-white px-8 py-4 rounded-full font-semibold hover:bg-gray-800 transition shadow-md hover:shadow-xl"
+        >
+          Subscribe
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Shop by Category -->
+  <section class="container mx-auto px-4 py-16 max-w-5xl">
+    <h2 class="text-4xl md:text-5xl font-heading font-bold text-center mb-12 text-gray-900">
+      Shop by Category
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+      {productCategories.map((category) => (
+        <a href={category.href} class="group relative rounded-xl overflow-hidden shadow-md hover:shadow-xl transition">
+          <img src={category.image} alt={category.name} class="w-full h-48 object-cover" />
+          <div class="absolute bottom-0 left-0 right-0 bg-white/85 py-3 text-center">
+            <h3 class="text-xl font-bold text-gray-900 transition">
+              {category.name}
+            </h3>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Brand Story -->
+  <section class="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-stone-100 py-12 md:py-16 overflow-hidden">
+    <div class="relative mx-auto max-w-5xl px-4 z-10">
+      <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+        <div class="w-full md:w-1/2">
+          <img
+            src="https://picsum.photos/900/1100?luxury&wellness"
+            alt="NOÜVE · moi brand aesthetic"
+            class="w-full rounded-2xl shadow-2xl object-cover"
+          />
+        </div>
+
+        <div class="w-full md:w-1/2 text-center md:text-left">
+          <h2 class="text-4xl md:text-5xl font-heading font-bold mb-6 text-gray-900">
+            A New Ritual
+          </h2>
+          <p class="text-lg md:text-xl mb-6 opacity-90 max-w-xl mx-auto md:mx-0 text-gray-900 leading-relaxed">
+            NOÜVE · moi was created for women who want wellness to feel elevated, intentional, and beautifully woven into daily life.
+          </p>
+          <p class="text-base md:text-lg text-gray-700 mb-8 leading-relaxed">
+            Thoughtful formulas. Refined branding. A modern wellness identity that feels premium without the circus.
+          </p>
+          <a
+            href="/about"
+            class="inline-block bg-gray-900 text-white px-10 py-4 rounded-full font-semibold text-lg hover:bg-gray-800 transition shadow-lg hover:shadow-xl"
+          >
+            Learn More
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Best Sellers -->
+  <section class="container mx-auto px-4 py-16 max-w-5xl">
+    <h2 class="text-4xl md:text-5xl font-heading font-bold text-center mb-12 text-gray-900">
+      Best Sellers
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {featuredProducts.slice(0, 3).map((product) => (
+        <a
+          href={product.href}
+          class="block relative rounded-xl overflow-hidden shadow-md hover:shadow-xl transition"
+        >
+          <img
+            src={product.image}
+            alt={product.name}
+            class="w-full h-72 object-cover"
+          />
+          <div class="absolute bottom-0 left-0 right-0 bg-white/85 py-4 text-center px-3">
+            <h3 class="text-xl font-bold text-gray-900">
+              {product.name}
+            </h3>
+            <p class="text-sm text-gray-600 mt-1">
+              {product.tagline}
+            </p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Founder / About -->
+  <section class="bg-white py-16 text-center border-t border-gray-100">
+    <div class="container mx-auto px-4 max-w-5xl">
+      <h2 class="text-4xl md:text-5xl font-heading font-bold mb-8 text-gray-900">
+        About the Founder
+      </h2>
+      <img
+        src="https://picsum.photos/300/300?portrait"
+        alt="Founder portrait"
+        class="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto mb-8 object-cover shadow-md"
+      />
+      <p class="text-lg md:text-xl text-gray-700 mb-6 max-w-3xl mx-auto leading-relaxed">
+        NOÜVE · moi is rooted in the idea that wellness should support how you feel, how you live, and how you evolve — with beauty, intention, and substance.
+      </p>
+      <a
+        href="/about"
+        class="font-medium text-lg hover:underline"
+      >
+        Read the Story →
+      </a>
+    </div>
+  </section>
+</BaseLayout>
