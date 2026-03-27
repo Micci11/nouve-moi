@@ -7,16 +7,16 @@ module.exports = {
     extend: {
       colors: {
         hero: {
-          bg: '#00B890',        // Main vibrant teal for solid stripes
-          text: '#D6FFF7',      // Light mint text for contrast
-          faded: 'rgba(0, 184, 144, 0.4)',  // 40% opacity version for light/faded stripes
-          dark: '#008C70',      // Darker hover/active shade
-          light: '#3FFFD9',     // Lighter tint for subtle accents
+          bg: '#EAFBF7',      // pale stripe blue
+          text: '#0F3F3A',
+          faded: '#EAFBF7',
+          dark: '#DDF5EF',
+          light: '#F6FEFC',
         },
         tiffany: {
-          DEFAULT: '#00B890',
-          dark: '#008C70',
-          light: '#D6FFF7',
+          DEFAULT: '#55C6B7',
+          dark: '#35B4A3',
+          light: '#EAFBF7',
         },
         crave: {
           gray: '#F8FAFC',
@@ -24,21 +24,33 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-        heading: ['Playfair Display', 'Georgia', 'serif'],
+        sans: [
+          'Inter',
+          'system-ui',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'Segoe UI',
+          'Roboto',
+          'sans-serif',
+        ],
+        heading: [
+          'Playfair Display',
+          'Georgia',
+          'serif',
+        ],
       },
       boxShadow: {
-        'soft': '0 4px 20px rgba(0, 184, 144, 0.15)',
-        'card': '0 10px 25px rgba(0, 0, 0, 0.08)',
-        'hover': '0 20px 40px rgba(0, 184, 144, 0.25)',
+        soft: '0 4px 20px rgba(0,0,0,0.06)',
+        card: '0 10px 25px rgba(0,0,0,0.08)',
+        hover: '0 20px 40px rgba(0,0,0,0.12)',
       },
       transitionProperty: {
-        'height': 'height',
-        'spacing': 'margin, padding',
+        height: 'height',
+        spacing: 'margin, padding',
       },
     },
   },
   plugins: [
     require('@tailwindcss/typography'),
   ],
-}
+};
